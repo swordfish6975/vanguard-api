@@ -1,4 +1,4 @@
-Vanguard API with breaking changes to get get_current_holdings working with vanguardinvestments.com.au
+Vanguard API with changes to get get_current_holdings working with vanguardinvestments.com.au
 ===
 
 This is a working proof-of-concept web-scraping based API for a [personal investor account][1] on [The Vanguard Group][2].
