@@ -169,16 +169,16 @@ def vanguard_current_holdings():
 
     res = None
     #try:
-        v = Vanguard()
-        v.login(vanguard_user.username, vanguard_user.password)
+    v = Vanguard()
+    v.login(vanguard_user.username, vanguard_user.password)
         #question = v.get_security_question()
         #answer = vanguard_user.security_questions.get(question)
         #v.answer_security_question(answer)
-        current_holdings = v.get_current_holdings()
+    current_holdings = v.get_current_holdings()
     #finally:
-        v.close_browser()
-        if len(current_holdings) == 0:
-            return rInternalServerError
+    v.close_browser()
+    if len(current_holdings) == 0:
+        return rInternalServerError
 
     return jsonify(current_holdings)
 
