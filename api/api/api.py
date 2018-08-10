@@ -126,7 +126,7 @@ def register_security_answer():
 
 # Vanguard Routes
 
-@app.route("/vanguard/total_assets")
+@app.route("/vanguard/total_assets", methods=['POST'])
 def vanguard_total_assets():
     try:
         user = auth()
@@ -155,7 +155,7 @@ def vanguard_total_assets():
 
     return jsonify(res)
 
-@app.route("/vanguard/current_holdings")
+@app.route("/vanguard/current_holdings", methods=['POST'])
 def vanguard_current_holdings():
     try:
         user = auth()
