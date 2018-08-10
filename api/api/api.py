@@ -168,15 +168,14 @@ def vanguard_current_holdings():
         return rNotEnrolled
 
     res = None
-    try:
+    #try:
         v = Vanguard()
         v.login(vanguard_user.username, vanguard_user.password)
-        question = v.get_security_question()
-        answer = vanguard_user.security_questions.get(question)
-        v.answer_security_question(answer)
-
+        #question = v.get_security_question()
+        #answer = vanguard_user.security_questions.get(question)
+        #v.answer_security_question(answer)
         current_holdings = v.get_current_holdings()
-    finally:
+    #finally:
         v.close_browser()
         if len(current_holdings) == 0:
             return rInternalServerError
