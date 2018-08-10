@@ -23,10 +23,10 @@ class Vanguard(Base):
 
         self.go_to_login()
 
-        form_id = "LoginForm"
+        form_id = "frm"
         user_input_id = "USER"
         password_input_id = "PASSWORD"
-        submit_id = "login"
+        submit_id = "submitButtonp"
 
         form_info = dict()
         form_info[user_input_id] = user
