@@ -93,19 +93,17 @@ class Vanguard(Base):
     def get_current_holdings(self):
         self.go_to_balances_and_holdings()
 
-        holdings_tables = self.browser.find_elements_by_xpath("//table[starts-with(@id,'BHForm2:accountID:')]")
+        holdings_tables = self.browser.find_elements_by_xpath("//table[starts-with(@id,'Prices')]")
         accounts = {}
         account_num = 0
 
         data_headers = []
-        data_headers.append( ("symbol",TextType.plain) )
-        data_headers.append( ("name",TextType.plain) )
-        data_headers.append( ("expense_ratio",TextType.percent) )
-        data_headers.append( ("quantity",TextType.plain) )
-        data_headers.append( ("last_price",TextType.dollar) )
-        data_headers.append( ("change_amount",TextType.dollar) )
-        data_headers.append( ("change_percent",TextType.percent) )
-        data_headers.append( ("current_balance",TextType.dollar) )
+        data_headers.append( ("Fund name",TextType.plain) )
+        data_headers.append( ("Asset class",TextType.plain) )
+        data_headers.append( ("Date",TextType.plain) )
+        data_headers.append( ("Units",TextType.plain) )
+        data_headers.append( ("Unit price",TextType.dollar) )
+        data_headers.append( ("Balance", TextType.dollar) )
 
         for holdings_table in holdings_tables:
             if  len( holdings_table.find_elements_by_tag_name("th") ) == 0:
@@ -115,11 +113,7 @@ class Vanguard(Base):
 
             # First row is Tables Headers
             # Second row simply says "ETFs"
-            rows = rows[2:]
-
-            # Row before last simply says "Buy Sell"
-            # Last row is Total Assets
-            rows = rows[:-2]
+            rows = rows[1:]
 
             # Remaining rows are actual ETFs
             holdings_info = []
