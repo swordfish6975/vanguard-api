@@ -93,7 +93,7 @@ class Vanguard(Base):
     def get_current_holdings(self):
         self.go_to_balances_and_holdings()
 
-        holdings_tables = self.browser.find_elements_by_xpath("//table[starts-with(@id,'Prices')]")
+        holdings_tables = self.browser.find_elements_by_xpath("//table[starts-with(@id,'Price')]")
         accounts = {}
         account_num = 0
 
@@ -106,16 +106,9 @@ class Vanguard(Base):
         data_headers.append( ("Balance", TextType.dollar) )
 
         for holdings_table in holdings_tables:
-            if  len( holdings_table.find_elements_by_tag_name("th") ) == 0:
-                continue
 
             rows = holdings_table.find_elements_by_tag_name("tr")
 
-            # First row is Tables Headers
-            # Second row simply says "ETFs"
-            rows = rows[1:]
-
-            # Remaining rows are actual ETFs
             holdings_info = []
             for row in rows:
                 holding_info = {}
