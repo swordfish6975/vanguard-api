@@ -113,7 +113,7 @@ class Vanguard(Base):
             for row in rows:
                 holding_info = {}
                 els = row.find_elements_by_tag_name("td")
-                if len(els) < 8:
+                if len(els) < 6:
                     continue
 
                 for el_num in xrange( len(els) ):
